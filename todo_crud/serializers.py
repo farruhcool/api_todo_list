@@ -6,6 +6,7 @@ from .models import ToDo
 class ToDoSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=120)
     description = serializers.CharField()
+    created_date = serializers.CharField()
     start_date = serializers.CharField()
     end_date = serializers.CharField()
     user_id = serializers.IntegerField()

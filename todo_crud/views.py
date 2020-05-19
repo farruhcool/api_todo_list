@@ -14,7 +14,7 @@ class ToDoView(APIView):
 
     def post(self, request):
         todo = request.data.get('todo')
-        serializer = ToDoSerializer(data=todo)
+        serializer = ToDoSerializer(data=todo, partial=True)
         if serializer.is_valid(raise_exception=True):
             todo_saved = serializer.save()
         return Response({"success": "Todo '{}' created successfully".format(todo_saved.title)})

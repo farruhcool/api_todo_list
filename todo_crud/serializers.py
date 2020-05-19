@@ -12,3 +12,12 @@ class ToDoSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return ToDo.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.description = validated_data.get('description', instance.description)
+        instance.start_date = validated_data.get('start_date', instance.start_date)
+        instance.end_date = validated_data.get('end_date', instance.end_date)
+        instance.user_id = validated_data.get('user_id', instance.user_id)
+        instance.save()
+        return instance
